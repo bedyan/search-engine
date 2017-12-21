@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <title>LAB3</title>
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+</head>
+<body>
+
+    <div>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../">Home
+              </a>
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav" >
+                  {%if html_index == 2%}
+                    <li class="active"><a href="../all-docs"> DB <span class="sr-only">(current)</span></a></li>
+                  {%else%}
+                    <li><a href="../all-docs"> DB </a></li>
+                  {%endif%}
+
+                  {%if html_index == 3%}
+                    <li class="active"><a href="../add-doc">Add new location<span class="sr-only">(current)</span></a></li>
+                  {%else%}
+                    <li><a href="../add-doc">Add new location</a></li>
+                  {%endif%}
+
+
+              </ul>
+              <form class="navbar-form navbar-left" role="search" action="/request" method="post">
+                  {% csrf_token %}
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Query" name="query" value="">
+                </div>
+                <button type="submit" class="btn btn-default">GO!</button>
+              </form>
+
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+    {% block content %}
+    {% endblock %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'search/base.html' %}
+{% load staticfiles %}
+    {% block content %}
+        <img  id="p1" src="{%static 'p1.png'%}">
+
+        <div class="container">
+            <div class="raw">
+                <div class="col-lg-1"></div>
+                <form method="post" enctype="multipart/form-data">
+                    <div class="col-lg-6">
+                        <input name="url" type="text" class="form-control" placeholder="Input URL">
+                    </div>
+
+                    <label class="btn btn-default btn-file col-lg-1">
+                        Из файла <input name="file_url" type="file" style="display: none;">
+                    </label>
+
+                    <button type="submit" class="btn btn-success col-lg-1 col-lg-offset-1">
+                        <span class="glyphicon glyphicon-ok" style="margin-right: 5px;"></span>OK
+                    </button>
+                    {% csrf_token %}
+                </form>
+                <div class="col-lg-1"></div>
+            </div>
+
+
+            <!--for results-->
+
+        </div>
+
+    {% endblock content %}
